@@ -23,8 +23,7 @@ class Command(BaseCommand):
             except (OperationalError, Psycopg2Error):
                 self.stderr.write(
                     self.style.ERROR(
-                        "Database unavailable, \
-                        waiting 1 second..."
+                        "Database unavailable, waiting 1 second...",
                     )
                 )
                 time.sleep(1)
