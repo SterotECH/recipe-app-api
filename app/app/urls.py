@@ -18,8 +18,17 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
+
+# Text to put at the end of each page's <title>.
+site_title = "Recipe Api"
+
+# Text to put in each page's <h1>.
+site_header = "Recipe"
+
+# Text to put at the top of the admin index page.
+index_title = "admin"
 urlpatterns = [
     path("admin/", admin.site.urls),
     path(
@@ -31,5 +40,9 @@ urlpatterns = [
         "-/api/docs/",
         SpectacularSwaggerView.as_view(url_name="api-schema"),
         name="api-docs",
+    ),
+    path(
+        "-/api/user/",
+        include("core.urls"),
     ),
 ]
