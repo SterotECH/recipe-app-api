@@ -67,3 +67,4 @@ class UserAdmin(BaseUserAdmin):
             },
         ),
     )
+    list_per_page: int = 10

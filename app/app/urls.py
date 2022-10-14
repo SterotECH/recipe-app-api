@@ -31,18 +31,12 @@ site_header = "Recipe"
 index_title = "admin"
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("_/schema/", SpectacularAPIView.as_view(), name="api-schema"),
     path(
-        "-/api/schema/",
-        SpectacularAPIView.as_view(),
-        name="api-schema",
-    ),
-    path(
-        "-/api/docs/",
+        "_/docs/",
         SpectacularSwaggerView.as_view(url_name="api-schema"),
         name="api-docs",
     ),
-    path(
-        "-/api/user/",
-        include("core.urls"),
-    ),
+    path("_/auth/user/", include("core.urls")),
+    path('_/recipe/', include('recipe.urls')),
 ]
